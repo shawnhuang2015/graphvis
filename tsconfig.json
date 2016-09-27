@@ -1,0 +1,25 @@
+{
+    "files": [
+        "src/main.ts"
+        // "src/lib/lib.ts",
+        // "src/lib/lib2.ts"
+    ],
+    "include": [
+        "src/lib/*"
+    ],
+    "compilerOptions": {
+      "declaration": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      // "module": "es6",
+      "moduleResolution": "node",
+      "noImplicitAny": false,
+      "noFallthroughCasesInSwitch": true,
+      "removeComments": false,
+      "sourceMap": true,
+      "target": "es5"
+    },
+    "exclude": [
+      "node_modules"
+    ]
+}
