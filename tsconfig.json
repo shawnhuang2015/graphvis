@@ -1,25 +1,24 @@
 {
-    "files": [
-        "src/main.ts"
-        // "src/lib/lib.ts",
-        // "src/lib/lib2.ts"
-    ],
     "include": [
-        "src/lib/*"
+        "src/**/*"
     ],
     "compilerOptions": {
+      "preserveConstEnums": true,
       "declaration": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      // "module": "es6",
+      "module": "commonjs",
       "moduleResolution": "node",
       "noImplicitAny": false,
       "noFallthroughCasesInSwitch": true,
-      "removeComments": false,
+      "removeComments": true,
       "sourceMap": true,
+      "allowJs":false,
       "target": "es5"
     },
     "exclude": [
-      "node_modules"
+      "node_modules",
+      "build",
+      "dist"
     ]
 }
