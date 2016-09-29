@@ -6,7 +6,7 @@ export function hello(compiler: string) {
   console.log(`Hello from ${compiler}`);
 }
 hello('Xiaoke Huang');
-mylib('Graph SQL');
+mylib('dfasd fs Graph SQL 12 123');
 lib2Test();
 
 class Animal {
@@ -20,7 +20,7 @@ class Animal {
 class Snake extends Animal {
   constructor(name: string) { super(name); }
   move(distanceInMeters = 5) {
-    console.log("Slithering...");
+    console.log('Slithering...');
     super.move(distanceInMeters);
   }
 }
@@ -28,13 +28,13 @@ class Snake extends Animal {
 class Horse extends Animal {
   constructor(name: string) { super(name); }
   move(distanceInMeters = 45) {
-    console.log("Galloping...");
+    console.log('Galloping...');
     super.move(distanceInMeters);
   }
 }
 
-let sam = new Snake("Sammy the Python");
-let tom: Animal = new Horse("Tommy the Palomino");
+let sam = new Snake('Sammy the Python');
+let tom: Animal = new Horse('Tommy the Palomino');
 
 sam.move();
 tom.move(34);
@@ -58,9 +58,9 @@ class Employee extends Person {
   }
 }
 
-// let xiaoke = new Person("Xiaoke");
+// let xiaoke = new Person('Xiaoke');
 // console.log(xiaoke.name);
-let howard = new Employee("Xiaoke", "Redwood City");
+let howard = new Employee('Xiaoke', 'Redwood City');
 console.log(howard.getElevatorPitch());
 // console.log(howard.name); // error
 

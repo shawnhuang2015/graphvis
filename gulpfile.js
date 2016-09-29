@@ -4,7 +4,7 @@ var clean = require('gulp-clean');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 // var filesize = require('gulp-filesize');
-var watch = require('gulp-watch');
+// var watch = require('gulp-watch');
 
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
@@ -16,6 +16,17 @@ var webpackstream = require('webpack-stream');
 var browserSync = require('browser-sync').create();
 
 var webpackgulp = require('gulp-webpack');
+
+var fs = require('fs')
+var license = "";
+fs.readFile('./index.js', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  license = data;
+  console.log(data);
+});
+
 
 gulp.task("default", ["clean"], function () {
     return gulp.src("src/**/*.ts")
@@ -70,7 +81,7 @@ gulp.task("js-watch", ["js"], function(done) {
   done();
 })
 
-gulp.task("js", ["compile", "copyHTML"], function() {
+gulp.task("js", ['compile', 'copyHTML'], function() {
   return gulp.src('.')
     .pipe(webpackstream({
       entry: {
@@ -108,11 +119,12 @@ gulp.task("js", ["compile", "copyHTML"], function() {
             keep_quoted_props: false
           }
         }),
-        new webpack.BannerPlugin("GraphSQL Inc.")
+        new webpack.BannerPlugin(license)
       ]
     }))
     .pipe(gulp.dest('dist/'))
     .on('error', gutil.log) 
+
 })
 
 
@@ -125,7 +137,9 @@ gulp.task("job", ["clean", "tslint", "compile", "webpack"], function() {
 
 gulp.task('clean', function(done) {
  gulp.src(["./build", "./dist"])
-       .pipe(clean());  
+       .pipe(clean())
+  .on('error', gutil.log)
+
 
  done()
 });
@@ -138,6 +152,8 @@ gulp.task("tslint", () =>
         .pipe(tslint.report({
           emitError: false
         }))
+  .on('error', gutil.log)
+
 );
 
 gulp.task("compile", ["clean", "tslint"], function () {
