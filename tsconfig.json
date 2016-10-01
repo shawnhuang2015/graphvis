@@ -14,7 +14,12 @@
       "removeComments": true,
       "sourceMap": true,
       "allowJs":false,
-      "target": "es5"
+      "target": "es5",
+      // "lib":"dom,es5,scripthost,es6"
+      "baseUrl": "/",
+      "paths": {
+        "ZoomCharts": ["zoomcharts/zoomcharts.d.ts"]
+      }
     },
     "exclude": [
       "node_modules",

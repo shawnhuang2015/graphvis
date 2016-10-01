@@ -14,7 +14,7 @@
       "spaces"
     ],
     "interface-name": [
-      true,
+      false,
       "never-prefix"
     ],
     "label-position": true,

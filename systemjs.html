@@ -2,6 +2,7 @@
 <html>
   <head>
     <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="zoomcharts/assets/zc.css"> -->
   </head>
   <body>
     <script src="node_modules/systemjs/dist/system.js"></script>
@@ -15,12 +16,15 @@
           "npm:*": "node_modules/*.js"
         },
         "map": {
-          "d3": "npm:d3/build/d3"
+          "d3": "npm:d3/build/d3",
+          "lodash": 'npm:lodash/index'
         },
       });
 
       // loads /js/main.js
       SystemJS.import('build/main');
     </script>
+
+    <div id=demo></div>
   </body>
 </html>

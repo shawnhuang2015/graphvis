@@ -58,7 +58,7 @@ gulp.task("default", ["clean"], function () {
 
 
 // use default task to launch Browsersync and watch JS files
-gulp.task('serve', ['js'], function (done) {
+gulp.task('serve', ['compile', 'copyHTML'], function (done) {
 
     // Serve files from the root of this project
     browserSync.init({
@@ -70,25 +70,24 @@ gulp.task('serve', ['js'], function (done) {
     // add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
     gulp.watch(["src/**/*.ts"], ['js-watch']);
-    gulp.watch(["color.html"], ['js-watch']);
-
+    gulp.watch(["*.html"], ['js-watch']);
 
     done();
 });
 
-gulp.task("js-watch", ["js"], function(done) {
+gulp.task("js-watch", ['compile', 'copyHTML'], function(done) {
   browserSync.reload();
   done();
 })
 
-gulp.task("js", ['compile', 'copyHTML'], function() {
+gulp.task("bundle", ['compile', 'copyAssets'], function() {
   return gulp.src('.')
     .pipe(webpackstream({
       entry: {
-        test: './build/main.js'
+        gvis: './build/main.js'
       },
       output: {
-        filename: '[name].js',
+        filename: '[name].min.js',
         libraryTarget: 'var', //commonjs2
         library: 'gvis'
       },
@@ -136,10 +135,9 @@ gulp.task("job", ["clean", "tslint", "compile", "webpack"], function() {
 })
 
 gulp.task('clean', function(done) {
- gulp.src(["./build", "./dist"])
+ gulp.src(["./build"])
        .pipe(clean())
   .on('error', gutil.log)
-
 
  done()
 });
@@ -164,6 +162,11 @@ gulp.task("compile", ["clean", "tslint"], function () {
         .pipe(gulp.dest('build'))
         .on('error', gutil.log)
 });
+
+gulp.task("copyAssets", function() {
+  return gulp.src('zoomcharts/assets/**/*')
+        .pipe(gulp.dest('dist/assets'))
+})
 
 gulp.task("copyHTML", ["compile"], function() {
   return gulp.src('*.html')

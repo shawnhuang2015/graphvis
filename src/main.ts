@@ -1,9 +1,70 @@
-///<reference path="../typings/index.d.ts" />
+/// <reference path="../typings/index.d.ts" />
+/// <reference path='../zoomcharts/zoomcharts.d.ts' />
 
 import { mylib } from './lib/lib';
 import {lib2Test} from './lib/lib2';
 
-import d3 = require('d3');
+import * as d3 from 'd3';
+import * as _ from 'lodash';
+// import * as ZoomCharts from '../zoomcharts/zoomcharts';
+// import { NetChart } from '../zoomcharts/zoomcharts';
+import { NetChart } from '../zoomcharts/zoomcharts';
+
+interface Parent { x; }
+interface Child extends Parent { y; }
+
+function foo(p: Child): Child;
+function foo(p: Parent): Parent;
+function foo(p: any): any;
+function foo(p: any) { return p; }
+
+console.log(foo('test'
+  ));
+console.log(d3.range(10));
+let array: number[] = [1];
+let other: any[] = _.concat<any>(<any>1, array, <any>2, [3], [[4, 4, 2, 5, 6]]);
+
+console.log(other);
+
+// class Test implements Window {
+//   ZoomChartsLicense: string;
+//   ZoomChartsLicenseKey: string;
+// }
+
+// let test1 = new Test();
+
+let data = {
+  'nodes': [
+    { 'id': 'n1', 'loaded': true, 'style': { 'label': 'Node1' } },
+    { 'id': 'n2', 'loaded': true, 'style': { 'label': 'Node2' } },
+    { 'id': 'n3', 'loaded': true, 'style': { 'label': 'Node3' } }
+  ],
+  'links': [
+    { 'id': 'l1', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1a', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1b', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1c', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1d', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1e', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1f', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1g', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1h', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l2', 'from': 'n2', 'to': 'n3', 'style': { 'fillColor': 'green', 'toDecoration': 'arrow' } },
+    { 'id': 'l3', 'from': 'n3', 'to': 'n1', 'style': { 'fillColor': 'blue', 'toDecoration': 'arrow' } }
+    ]
+};
+
+let setting: Object = {
+    container: document.getElementById('demo'),
+    area: { height: 350 },
+    data: { preloaded: data },
+    assetsUrlBase: '/dist/assets'
+};
+
+new NetChart(setting);
+// new ZoomCharts.NetChart(setting);
+
+
 
 export function hello(compiler: string) {
   console.log(`Hello from ${compiler}`);
@@ -67,5 +128,4 @@ let howard = new Employee('Xiaoke', 'Redwood City');
 console.log(howard.getElevatorPitch());
 // console.log(howard.name); // error
 
-console.log(d3.range(10));
 
