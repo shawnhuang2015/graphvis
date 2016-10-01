@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "typings": "typings"
   },
   "author": "Xiaoke Huang",
   "license": "ISC",

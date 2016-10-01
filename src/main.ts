@@ -1,11 +1,14 @@
+///<reference path="../typings/index.d.ts" />
+
 import { mylib } from './lib/lib';
 import {lib2Test} from './lib/lib2';
 
+import d3 = require('d3');
 
 export function hello(compiler: string) {
   console.log(`Hello from ${compiler}`);
 }
-hello('Xiaoke Huang');
+hello('Xiaoke Huan');
 mylib('dfasd fs Graph SQL 12 123');
 lib2Test();
 
@@ -63,4 +66,6 @@ class Employee extends Person {
 let howard = new Employee('Xiaoke', 'Redwood City');
 console.log(howard.getElevatorPitch());
 // console.log(howard.name); // error
+
+console.log(d3.range(10));
 
