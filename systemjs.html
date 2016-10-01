@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script>
+      // set our baseURL reference path
+      SystemJS.config({
+        "baseURL": ".",
+        "defaultJSExtensions": true,
+        "paths": {
+          "*": "*.js",
+          "npm:*": "node_modules/*.js"
+        },
+        "map": {
+          "d3": "npm:d3/build/d3"
+        },
+      });
+
+      // loads /js/main.js
+      SystemJS.import('build/main');
+    </script>
+  </body>
+</html>
