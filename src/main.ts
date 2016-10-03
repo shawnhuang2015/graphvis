@@ -1,13 +1,13 @@
-/// <reference path="../typings/index.d.ts" />
+/// <reference path='../typings/index.d.ts' />
 /// <reference path='../zoomcharts/zoomcharts.d.ts' />
 
 import { mylib } from './lib/lib';
 import {lib2Test} from './lib/lib2';
 
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
+import d3 = require('d3');
 import * as _ from 'lodash';
 // import * as ZoomCharts from '../zoomcharts/zoomcharts';
-// import { NetChart } from '../zoomcharts/zoomcharts';
 import { NetChart } from '../zoomcharts/zoomcharts';
 
 interface Parent { x; }
@@ -22,9 +22,21 @@ console.log(foo('test'
   ));
 console.log(d3.range(10));
 let array: number[] = [1];
-let other: any[] = _.concat<any>(<any>1, array, <any>2, [3], [[4, 4, 2, 5, 6]]);
+let other: any[] = _.concat<any>(1, array, 2, [3], [[4, 4, 2, 5, 6]]);
 
 console.log(other);
+
+let myTest: { (...values: number[]): number } = function() {
+  let result = 0;
+  for (let i = 0; i < arguments.length; ++i) {
+    result += arguments[i];
+  }
+
+  return result;
+};
+
+console.log(myTest(1, 2, 3, 4, 5));
+
 
 // class Test implements Window {
 //   ZoomChartsLicense: string;

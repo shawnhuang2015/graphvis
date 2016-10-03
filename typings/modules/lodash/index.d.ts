@@ -498,7 +498,7 @@ namespace _ {
      * console.log(array);
      * // => [1]
      */
-    concat<T>(...values: (T[] | List<T>)[]): T[];
+    concat<T>(...values: (T | T[] | List<T>)[]): T[];
   }
 
   // _.difference

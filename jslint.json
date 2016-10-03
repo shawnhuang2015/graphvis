@@ -60,6 +60,7 @@
 
     "globals": {
         "require": true,
-        "define": true
+        "define": true,
+        "console": true
     }
 }

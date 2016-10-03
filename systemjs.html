@@ -5,6 +5,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="zoomcharts/assets/zc.css"> -->
   </head>
   <body>
+    <script src="./dist/assets/license.js"></script>
+  
     <script src="node_modules/systemjs/dist/system.js"></script>
     <script>
       // set our baseURL reference path
@@ -17,7 +19,8 @@
         },
         "map": {
           "d3": "npm:d3/build/d3",
-          "lodash": 'npm:lodash/index'
+          "lodash": "npm:lodash/index",
+          "ZoomCharts": "zoomcharts/zoomcharts"
         },
       });
 

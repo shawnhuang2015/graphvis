@@ -127,7 +127,7 @@ class Plane implements Thing {
   public normal: (pos: MyVector) => MyVector;
   public intersect: (ray: Ray) => Intersection;
   constructor(norm: MyVector, offset: number, public surface: Surface) {
-    this.normal = function(pos: MyVector) { return norm; }
+    this.normal = function(pos: MyVector) { return norm; };
     this.intersect = function(ray: Ray): Intersection {
       let denom = MyVector.dot(norm, ray.dir);
       if (denom > 0) {
@@ -136,7 +136,7 @@ class Plane implements Thing {
         let dist = (MyVector.dot(norm, ray.start) + offset) / (-denom);
         return { thing: this, ray: ray, dist: dist };
       }
-    }
+    };
   }
 }
 
@@ -146,7 +146,7 @@ module Surfaces {
     specular: function(pos) { return MyColor.grey; },
     reflect: function(pos) { return 0.7; },
     roughness: 250
-  }
+  };
   export let checkerboard: Surface = {
     diffuse: function(pos) {
       if ((Math.floor(pos.z) + Math.floor(pos.x)) % 2 !== 0) {
@@ -237,7 +237,7 @@ class RayTracer {
         return MyColor.plus(col, MyColor.plus(MyColor.times(thing.surface.diffuse(pos), lMycolor),
           MyColor.times(thing.surface.specular(pos), sMycolor)));
       }
-    }
+    };
     return scene.lights.reduce(addLight, MyColor.defaultMyColor);
   }
 
@@ -251,7 +251,7 @@ class RayTracer {
       for (let x = 0; x < screenWidth; x++) {
         let Mycolor = this.traceRay({ start: scene.Mycamera.pos, dir: getPoint(x, y, scene.Mycamera) }, scene, 0);
         let c = MyColor.toDrawingMyColor(Mycolor);
-        ctx.fillStyle = "rgb(" + String(c.r) + ", " + String(c.g) + ", " + String(c.b) + ")";
+        ctx.fillStyle = 'rgb(' + String(c.r) + ', ' + String(c.g) + ', ' + String(c.b) + ')';
         ctx.fillRect(x, y, x + 1, y + 1);
       }
     }
@@ -272,13 +272,13 @@ function defaultScene(): Scene {
   };
 }
 
-let canv = document.createElement("canvas");
+let canv = document.createElement('canvas');
 let tmp: Scene = defaultScene();
 
 canv.width = 256;
 canv.height = 256;
 document.body.appendChild(canv);
-let ctx = canv.getContext("2d");
+let ctx = canv.getContext('2d');
 let rayTracer = new RayTracer();
 rayTracer.render(tmp, ctx, canv.width, canv.height);
 
@@ -290,27 +290,27 @@ let tmpZ = 4.0;
 document.onkeypress = function(e: any) {
   console.log(e);
   switch (e.key) {
-    case "w":
+    case 'w':
       tmpY -= 0.3;
-      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0))
+      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0));
       rayTracer.render(tmp, ctx, canv.width, canv.height);
       break;
 
-    case "s":
-      tmpY += 0.3
-      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0))
+    case 's':
+      tmpY += 0.3;
+      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0));
       rayTracer.render(tmp, ctx, canv.width, canv.height);
       break;
 
-    case "a":
+    case 'a':
       tmpX -= 0.3;
-      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0))
+      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0));
       rayTracer.render(tmp, ctx, canv.width, canv.height);
       break;
 
-    case "d":
+    case 'd':
       tmpX += 0.3;
-      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0))
+      tmp.Mycamera = new MyCamera(new MyVector(tmpX, tmpY, tmpZ), new MyVector(-1.0, 0.5, 0.0));
       rayTracer.render(tmp, ctx, canv.width, canv.height);
       break;
   }

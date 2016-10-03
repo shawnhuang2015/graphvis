@@ -1,8 +1,8 @@
-var GVISLicense = "1a12de63d60 : development";
-var GVISLicenseKey = "aed2cff15c92be627bddb1537d6a001a12de63d60e645abd06918a4e03968cd223d174babfcf5";
+window.GVISLicense = "graphsql : development";
+window.GVISLicenseKey = "aed2cff15c92be627bddb1537d6a001a12de63d60e645abd06918a4e03968cd223d174babfcf5";
 
-var ZoomChartsLicense = "ZCP-6f34pz0ly-4: GraphSQL VIS";
-var ZoomChartsLicenseKey = "b758640604ef5664e06dde5825dd2f192e9a24bae98c34d3bf"+
+window.ZoomChartsLicense = "ZCP-6f34pz0ly-4: GraphSQL VIS";
+window.ZoomChartsLicenseKey = "b758640604ef5664e06dde5825dd2f192e9a24bae98c34d3bf"+
 "aed2cff15c92be627bddb1537d6a001a12de63d60e645abd06918a4e03968cd223d174babfcf5"+
 "9e10823cdeb20be7a941b283d0e51e3646f6bd6f084c27f26842c88f623580fd014519e1b8e34"+
 "3dfe395103040cff1822237e6875f51f06844dee4dea2aabc99f0731f69b54bed289bf4aa413a"+

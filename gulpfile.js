@@ -17,14 +17,14 @@ var browserSync = require('browser-sync').create();
 
 var webpackgulp = require('gulp-webpack');
 
-var fs = require('fs')
+var fs = require('fs');
 var license = "";
-fs.readFile('./index.js', 'utf8', function (err,data) {
+fs.readFile('./zoomcharts/LICENSE.txt', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   license = data;
-  console.log(data);
+  // console.log(data);
 });
 
 
@@ -38,7 +38,7 @@ gulp.task("default", ["clean"], function () {
         }))
         .pipe(tsProject())
         .pipe(uglify())
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./dist'));
         // .pipe(ts({
         //   declaration: true
         // }))
@@ -78,7 +78,7 @@ gulp.task('serve', ['compile', 'copyHTML'], function (done) {
 gulp.task("js-watch", ['compile', 'copyHTML'], function(done) {
   browserSync.reload();
   done();
-})
+});
 
 gulp.task("bundle", ['compile', 'copyAssets'], function() {
   return gulp.src('.')
@@ -122,36 +122,38 @@ gulp.task("bundle", ['compile', 'copyAssets'], function() {
       ]
     }))
     .pipe(gulp.dest('dist/'))
-    .on('error', gutil.log) 
+    .on('error', gutil.log) ;
 
-})
+});
 
 
 
 gulp.task("job", ["clean", "tslint", "compile", "webpack"], function() {
   return gulp.src("dist/webpack.js")
           .pipe(uglify())
-          .pipe(gulp.dest('dist/'))
-})
-
-gulp.task('clean', function(done) {
- gulp.src(["./build"])
-       .pipe(clean())
-  .on('error', gutil.log)
-
- done()
+          .pipe(gulp.dest('dist/'));
 });
 
-gulp.task("tslint", () =>
-    gulp.src("src/**/*.ts")
+gulp.task('clean', function(done) {
+ gutil.log('Cleaning', gutil.colors.magenta('##############################################################'));
+
+ gulp.src(["./build"])
+       .pipe(clean())
+  .on('error', gutil.log);
+
+ done();
+});
+
+gulp.task("tslint", function(done) {
+   return gulp.src("src/**/*.ts")
         .pipe(tslint({
             formatter: "verbose"
         }))
         .pipe(tslint.report({
           emitError: false
         }))
-  .on('error', gutil.log)
-
+        .on('error', gutil.log);
+}
 );
 
 gulp.task("compile", ["clean", "tslint"], function () {
@@ -160,18 +162,18 @@ gulp.task("compile", ["clean", "tslint"], function () {
         .pipe(tsProject())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('build'))
-        .on('error', gutil.log)
+        .on('error', gutil.log);
 });
 
 gulp.task("copyAssets", function() {
   return gulp.src('zoomcharts/assets/**/*')
-        .pipe(gulp.dest('dist/assets'))
-})
+        .pipe(gulp.dest('dist/assets'));
+});
 
 gulp.task("copyHTML", ["compile"], function() {
   return gulp.src('*.html')
-        .pipe(gulp.dest('build'))
-})
+        .pipe(gulp.dest('build'));
+});
 
 gulp.task('ugl', function() {
   return gulp.src('build/bundle.js')
@@ -195,8 +197,8 @@ gulp.task('ugl', function() {
         }))
         .pipe(rename('bundle.min.js'))
         .pipe(gulp.dest('./build/'))
-        .on('error', gutil.log)
-})
+        .on('error', gutil.log);
+});
 
 gulp.task("webpack", ["compile", "copyHTML"], function() {
   return gulp.src('./')
@@ -213,8 +215,8 @@ gulp.task("webpack", ["compile", "copyHTML"], function() {
         }))
         
         .pipe(gulp.dest('dist/'))
-        .on('error', gutil.log)    
+        .on('error', gutil.log)  ;  
 
-})
+});
 
 

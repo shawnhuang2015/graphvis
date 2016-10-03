@@ -15,10 +15,8 @@
       "sourceMap": true,
       "allowJs":false,
       "target": "es5",
-      // "lib":"dom,es5,scripthost,es6"
-      "baseUrl": "/",
+      "baseUrl": ".",
       "paths": {
-        "ZoomCharts": ["zoomcharts/zoomcharts.d.ts"]
       }
     },
     "exclude": [
