@@ -53,7 +53,7 @@
     "maxerr":       500,
     "maxlen":       150,
     "passfail":     false,
-    "latedef":      true,
+    "latedef":      false,
     "camelcase":    false,
     "indent":       4,
     "undef":        true,
@@ -61,6 +61,8 @@
     "globals": {
         "require": true,
         "define": true,
-        "console": true
+        "console": true,
+        "SystemJS": true,
+        "gvis": true
     }
 }

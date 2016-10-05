@@ -1,5 +1,6 @@
 window.GVISLicense = "graphsql : development";
-window.GVISLicenseKey = "aed2cff15c92be627bddb1537d6a001a12de63d60e645abd06918a4e03968cd223d174babfcf5";
+window.GVISLicenseKey = "a728640604ef5164e06d2e58225d2f192e5a24bae68c34d3bf"+
+"a1d2cff15c92be627bddb1a37d6a00ba12de63d60e6452bd06918a4e03268cd223d174babasdf";
 
 window.ZoomChartsLicense = "ZCP-6f34pz0ly-4: GraphSQL VIS";
 window.ZoomChartsLicenseKey = "b758640604ef5664e06dde5825dd2f192e9a24bae98c34d3bf"+

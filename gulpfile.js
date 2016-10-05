@@ -5,6 +5,13 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 // var filesize = require('gulp-filesize');
 // var watch = require('gulp-watch');
+var concat = require('gulp-concat');
+
+gulp.task('concat', function() {
+  return gulp.src(['zoomcharts/assets/license.js', 'dist/gvis.min.js'])
+    .pipe(concat('gvis.min.js'))//, {newLine: '\n\n'}))
+    .pipe(gulp.dest('dist'));
+});
 
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
@@ -176,9 +183,9 @@ gulp.task("copyHTML", ["compile"], function() {
 });
 
 gulp.task('ugl', function() {
-  return gulp.src('build/bundle.js')
+  return gulp.src('dist/gvis.min.js')
         .pipe(uglify({
-          mangle: false,
+          mangle: true,
           output : {
             beautify      : false, // beautify output?
             max_line_len  : 40, // maximum line length (for non-beautified output)
@@ -196,7 +203,7 @@ gulp.task('ugl', function() {
           }
         }))
         .pipe(rename('bundle.min.js'))
-        .pipe(gulp.dest('./build/'))
+        .pipe(gulp.dest('./dist/'))
         .on('error', gutil.log);
 });
 

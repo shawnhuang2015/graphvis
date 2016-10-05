@@ -10,6 +10,18 @@ import * as _ from 'lodash';
 // import * as ZoomCharts from '../zoomcharts/zoomcharts';
 import { NetChart } from '../zoomcharts/zoomcharts';
 
+import { Main } from './lib/vis';
+
+let demo0 = new Main();
+let demo1 = new Main();
+let demo2 = new Main();
+let demo3 = new Main();
+demo0.index();
+demo1.index();
+demo2.index();
+demo3.index();
+
+
 interface Parent { x; }
 interface Child extends Parent { y; }
 
@@ -55,10 +67,10 @@ let data = {
     { 'id': 'l1', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
     { 'id': 'l1a', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
     { 'id': 'l1b', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
-    { 'id': 'l1c', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
-    { 'id': 'l1d', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
-    { 'id': 'l1e', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
-    { 'id': 'l1f', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1c', 'from': 'n2', 'to': 'n1', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1d', 'from': 'n3', 'to': 'n1', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1e', 'from': 'n2', 'to': 'n1', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
+    { 'id': 'l1f', 'from': 'n2', 'to': 'n1', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
     { 'id': 'l1g', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
     { 'id': 'l1h', 'from': 'n1', 'to': 'n2', 'style': { 'fillColor': 'red', 'toDecoration': 'arrow' } },
     { 'id': 'l2', 'from': 'n2', 'to': 'n3', 'style': { 'fillColor': 'green', 'toDecoration': 'arrow' } },
@@ -67,7 +79,7 @@ let data = {
 };
 
 let setting: Object = {
-    container: document.getElementById('demo'),
+    container: document.getElementById('viewport'),
     area: { height: 350 },
     data: { preloaded: data },
     assetsUrlBase: '/dist/assets'
@@ -85,7 +97,7 @@ hello('Xiaoke Huan');
 mylib('dfasd fs Graph SQL 12 123');
 lib2Test();
 
-class Animal {
+export class Animal {
   private name: string;
   constructor(theName: string) { this.name = theName; }
   move(distanceInMeters = 0) {
