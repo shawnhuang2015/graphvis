@@ -226,4 +226,35 @@ gulp.task("webpack", ["compile", "copyHTML"], function() {
 
 });
 
+var jasmine = require('gulp-jasmine');
+var SpecReporter = require('jasmine-spec-reporter');
+ 
+gulp.task('test', function() {
+    gulp.src('test/spec.js')
+        .pipe(jasmine({
+            reporter: new SpecReporter({
+                        displayStacktrace: 'none',
+                        displayFailuresSummary: true,
+                        displayPendingSummary: true,
+                        displaySuccessesSummary: false,
+                        displaySuccessfulSpec: true,
+                        displayFailedSpec: true,
+                        displayPendingSpec: true,
+                        displaySpecDuration: false,
+                        displaySuiteNumber: false,
+                        colors: {
+                          success: 'green',
+                          failure: 'red',
+                          pending: 'yellow'
+                        },
+                        prefixes: {
+                          success: '✓ ',
+                          failure: '✗ ',
+                          pending: '* '
+                        },
+                        customProcessors: []
+                      })
+        }));
+});
+
 

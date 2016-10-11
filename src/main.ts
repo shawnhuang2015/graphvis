@@ -50,6 +50,31 @@ let myTest: { (...values: number[]): number } = function() {
 console.log(myTest(1, 2, 3, 4, 5));
 
 
+console.group('lodash');
+
+let aa = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      d1: 1,
+      d2: 2
+    }
+  }
+};
+
+let bb = {
+  a: 2,
+  b: 1
+};
+
+console.log(_.assignIn(aa, bb));
+
+console.log(aa.b === bb.b);
+
+console.groupEnd();
+
+
 // class Test implements Window {
 //   ZoomChartsLicense: string;
 //   ZoomChartsLicenseKey: string;

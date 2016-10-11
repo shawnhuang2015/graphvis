@@ -63,6 +63,9 @@
         "define": true,
         "console": true,
         "SystemJS": true,
-        "gvis": true
+        "gvis": true,
+        "describe": true,
+        "it": true,
+        "expect": true
     }
 }
