@@ -6,6 +6,20 @@ var rename = require('gulp-rename');
 // var filesize = require('gulp-filesize');
 // var watch = require('gulp-watch');
 var concat = require('gulp-concat');
+var Server = require('karma').Server;
+
+gulp.task('karma', function (done) {
+  new Server({
+    config: {
+      browsers: ['Chrome'],
+      frameworks: ['jasmine'],
+      files: [
+        'test/**/*.spec.js'
+      ]
+    },
+    singleRun: true
+  }, done).start();
+});
 
 gulp.task('concat', function() {
   return gulp.src(['zoomcharts/assets/license.js', 'dist/gvis.min.js'])
