@@ -70,8 +70,6 @@ let bb = {
 
 console.log(_.assignIn(aa, bb));
 
-console.log(aa.b === bb.b);
-
 console.groupEnd();
 
 

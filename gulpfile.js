@@ -271,4 +271,23 @@ gulp.task('test', function() {
         }));
 });
 
+var shell = require('gulp-shell');
+gulp.task('rollup', shell.task([
+  'rollup -c'
+  ]));
 
+var rollup = require('gulp-rollup');
+
+gulp.task('gulp-rollup', function() {
+  gulp.src('./build/*.js')
+    // transform the files here.
+    .pipe(rollup({
+      // any option supported by Rollup can be set here.
+      entry: './build/main.js',
+      format: 'cjs', // amd, cjs, es6, iife, umd
+      moduleName: 'gvis',
+      external: ['d3', 'lodash']
+    }))
+    .pipe(rename('rollup.js'))
+    .pipe(gulp.dest('./dist'));
+});
