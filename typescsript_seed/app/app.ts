@@ -16,7 +16,6 @@ api.use(restify.queryParser());
 api.use(restify.authorizationParser());
 api.use(restify.fullResponse());
 
-
 fs.readdirSync(__dirname + '/routes').forEach(function (routeConfig: string) {
   if (routeConfig.substr(-3) === '.js') {
     let route = require(__dirname + '/routes/' + routeConfig);

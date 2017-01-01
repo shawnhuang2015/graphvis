@@ -1,12 +1,13 @@
 {
-  "name": "restify-typescript-seed",
+  "name": "typescript_seed",
   "version": "1.0.0",
   "description": "a seed project for creating http service using restify written in typescript",
   "main": "app.js",
   "scripts": {
     "test": "node_modules/.bin/_mocha test/unit/**/*.spec.js",
     "compile": "node_modules/.bin/tsc",
-    "start": "node app/app.js"
+    "watch": "node_modules/.bin/tsc -w",
+    "start": "node_modules/.bin/tsc -w & nodemon --watch app/index.js app/index.js"
   },
   "keywords": [
     "typescript",
@@ -21,7 +22,9 @@
     "@types/restify": "^2.0.33",
     "@types/sinon": "^1.16.31",
     "@types/supertest": "^1.1.31",
-    "restify": "^4.1.1"
+    "restify": "^4.1.1",
+    "rxjs": "^5.0.1",
+    "systemjs": "^0.19.41"
   },
   "devDependencies": {
     "chai": "^3.5.0",

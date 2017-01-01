@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+</head>
+<body>
+<input type='text'>
+<button>Test</button>
+<h2></h2>
+</body>
+
+<script src="/node_modules/systemjs/dist/system.js"></script>
+<script>
+  // set our baseURL reference path
+  SystemJS.config({
+    baseURL: '/node_modules/',
+    defaultJSExtensions: 'true'
+  });
+
+  // loads /js/main.js
+  SystemJS.import('/app/index.js');
+</script>
+</html>
